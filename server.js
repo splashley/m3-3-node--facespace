@@ -40,6 +40,11 @@ const handleProfilePage = (req, res) => {
   });
 };
 
+// handleSignin function
+const handleSignin = (req, res) => {
+  res.send("ok");
+};
+
 // -----------------------------------------------------
 // server endpoints
 express()
@@ -53,6 +58,9 @@ express()
 
   // create endpoint for user profiles
   .get("/users/:_id", handleProfilePage)
+
+  // create endpoint for signin page
+  .get("/signin", handleSignin)
 
   // a catchall endpoint that will send the 404 message.
   .get("*", handleFourOhFour)
