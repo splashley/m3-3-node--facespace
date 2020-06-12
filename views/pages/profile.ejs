@@ -2,4 +2,15 @@
 <div class="profile-page">
   <%= user.name %>
 </div>
+<div>
+  <h3><%= user.name %>'s Friends</h3>
+  <ul>
+    <!-- loop over the array of friends -->
+    <!-- each friend's image and name should be visible. -->
+    <% userFriends.forEach((userFriend) => { %>
+    <li><img src="<%- userFriend.avatarUrl %>" /></li>
+    <li><%- userFriend.name %></li>
+    <% }) %>
+  </ul>
+</div>
 <%- include('../partials/footer') %>

@@ -24,13 +24,21 @@ const handleProfilePage = (req, res) => {
   let currentUser = users.find((user) => {
     return user._id === id;
   });
-  console.log(id);
+  // define userFriends
+  let userFriends = [];
+  // loop over current user's friends
+  // inside our loop, look up the friendUser and push object to userFriends
+  currentUser.friends.forEach((friendId) => {
+    let friendUser = users.find((user) => {
+      return user._id === friendId;
+    });
+    userFriends.push(friendUser);
+  });
   res.status(200).render("pages/profile", {
     user: currentUser,
+    userFriends: userFriends,
   });
 };
-
-// find user ID
 
 // -----------------------------------------------------
 // server endpoints
