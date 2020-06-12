@@ -13,8 +13,26 @@ const handleFourOhFour = (req, res) => {
 };
 
 const handleHomepage = (req, res) => {
-  res.status(200).render("pages/homepage", { users: users });
+  res
+    .status(200)
+    .render("pages/homepage", { currentUser: currentUser, users: users });
 };
+
+// handleProfilePage function
+const handleProfilePage = (req, res) => {
+  let id = req.params._id;
+  let user = users.find((user) => {
+    return user._id === id;
+  });
+  console.log(id);
+  res.status(200).send(id);
+  // res.status(200).render("pages/profile", {
+  //   user: user,
+  //   currentUser: currentUser,
+  // });
+};
+
+// find user ID
 
 // -----------------------------------------------------
 // server endpoints
@@ -26,6 +44,9 @@ express()
 
   // endpoints
   .get("/", handleHomepage)
+
+  // create endpoint for user profiles
+  .get("/users/:_id", handleProfilePage)
 
   // a catchall endpoint that will send the 404 message.
   .get("*", handleFourOhFour)
