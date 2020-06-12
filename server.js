@@ -21,15 +21,13 @@ const handleHomepage = (req, res) => {
 // handleProfilePage function
 const handleProfilePage = (req, res) => {
   let id = req.params._id;
-  let user = users.find((user) => {
+  let currentUser = users.find((user) => {
     return user._id === id;
   });
   console.log(id);
-  res.status(200).send(id);
-  // res.status(200).render("pages/profile", {
-  //   user: user,
-  //   currentUser: currentUser,
-  // });
+  res.status(200).render("pages/profile", {
+    user: currentUser,
+  });
 };
 
 // find user ID
