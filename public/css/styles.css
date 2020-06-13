@@ -43,3 +43,8 @@ header a {
 .image-hover img:hover {
   opacity: 0.5;
 }
+
+.friendBanner {
+  padding: 1px;
+  border: 10px solid orange;
+}

@@ -13,9 +13,10 @@ const handleFourOhFour = (req, res) => {
 };
 
 const handleHomepage = (req, res) => {
-  res
-    .status(200)
-    .render("pages/homepage", { currentUser: currentUser, users: users });
+  res.status(200).render("pages/homepage", {
+    currentUser: currentUser,
+    users: users,
+  });
 };
 
 // handleProfilePage function
@@ -50,6 +51,9 @@ const handleProfilePage = (req, res) => {
 
 // handleSignin function
 const handleSignin = (req, res) => {
+  if (currentUser.hasOwnProperty("_id")) {
+    res.status(200).redirect(`/users/${currentUser._id}`);
+  }
   res.status(200).render("pages/signin", { currentUser: currentUser });
 };
 
