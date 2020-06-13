@@ -7,7 +7,13 @@
   </head>
   <body class="profile-page">
     <header class="header">
-      <h1 class="site-title">Facespace</h1>
+      <h1 class="site-title"><a href="/">Facespace</a></h1>
+      <p class="signin-text">
+        <% if (currentUser.hasOwnProperty('name')) { %> Howdy, <%=
+        currentUser.name %> <% } else { %>
+        <a href="/signin" class="login">Sign in</a>
+        <% } %>
+      </p>
     </header>
   </body>
 </html>

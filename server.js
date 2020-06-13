@@ -20,29 +20,37 @@ const handleHomepage = (req, res) => {
 
 // handleProfilePage function
 const handleProfilePage = (req, res) => {
+  currentUser = currentUser;
+
   let id = req.params._id;
-  let currentUser = users.find((user) => {
+  let lookupUser = users.find((user) => {
     return user._id === id;
   });
   // define userFriends
   let userFriends = [];
+
   // loop over current user's friends
   // inside our loop, look up the friendUser and push object to userFriends
-  currentUser.friends.forEach((friendId) => {
+  lookupUser.friends.forEach((friendId) => {
     let friendUser = users.find((user) => {
       return user._id === friendId;
     });
-    userFriends.push(friendUser);
+
+    if (friendUser) {
+      userFriends.push(friendUser);
+    }
   });
+
   res.status(200).render("pages/profile", {
-    user: currentUser,
+    currentUser: currentUser,
+    user: lookupUser,
     userFriends: userFriends,
   });
 };
 
 // handleSignin function
 const handleSignin = (req, res) => {
-  res.status(200).render("pages/signin");
+  res.status(200).render("pages/signin", { currentUser: currentUser });
 };
 
 // handleName function
@@ -51,7 +59,10 @@ const handleName = (req, res) => {
   let loginName = users.find((user) => {
     return user.name === firstName;
   });
+
   if (loginName) {
+    console.log(loginName);
+    currentUser = loginName;
     res.status(200).redirect(`/users/${loginName._id}`);
   } else {
     res.status(404).redirect("/signin");

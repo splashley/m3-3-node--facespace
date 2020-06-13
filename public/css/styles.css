@@ -1,9 +1,37 @@
-@import 'settings/reset.css';
-@import 'settings/typography.css';
-@import 'settings/variables.css';
-@import 'components/header.css';
-@import 'components/homepage.css';
-@import 'components/signin-form.css';
-@import 'components/profile-page.css';
+@import "settings/reset.css";
+@import "settings/typography.css";
+@import "settings/variables.css";
+@import "components/header.css";
+@import "components/homepage.css";
+@import "components/signin-form.css";
+@import "components/profile-page.css";
 
 /* Place all of your custom CSS below. 😃 */
+
+.signin-text {
+  color: white;
+  text-align: right;
+  font-family: "Teko", sans-serif;
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 1.5em;
+}
+
+.signin-text a {
+  color: white;
+  text-decoration: none;
+  text-align: right;
+  font-family: "Teko", sans-serif;
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 1.5em;
+}
+
+header a {
+  color: white;
+  text-decoration: none;
+  font-family: "Teko", sans-serif;
+  font-size: 30px;
+  font-weight: 300;
+  line-height: 1.5em;
+}
